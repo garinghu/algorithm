@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //普通队列：先进先出
+    //优先队列：与优先级有关
+    //n个元素选出前m个介绍 优先队列nlogm
+    // 二叉堆是完全二叉树 用数组实现二叉堆
+    // parent(i) = i/2(除不开取整) leftChild(i) = 2*i rightChild(i) = 2*i+1
+    
+    
+    //最大堆实现 O(nlogn)
+    function MaxHeap() {
+       
+        var data = [],
+            count = 0;
+        
+        function shiftUp(k) {
+            while(k > 0 && data[parseInt(k-1/2)] < data[k]){
+                [data[parseInt(k-1/2)], data[k]] = [data[k], data[parseInt(k-1/2)]]
+                k = parseInt(k-1/2);
+            }
+        }
+        
+        this.insert = function(element) {
+            data[count] = element;
+            shiftUp(count);
+            count ++;
+        }
+        
+        this.extractMax = function() {
+            if(count > 0){
+                var x = data[0];
+                data.shift();
+                count --;
+                return x;
+            }
+        }
+        
+        
+        //返回个数
+        this.size = function() {
+            return count;
+        }
+        
+        this.isEmpty = function() {
+            return count == 0;
+        }
+        
+        this.display = function() {
+            return data;
+        }
+    }
+    
+    var heap = new MaxHeap();
+    
+    //堆排序
+    
+    function heapSort(arr, n){
+        maxheap = new MaxHeap();
+        for(var i = 0; i < n; i++){
+            maxheap.insert(arr[i])
+        }
+        
+        for(var i = n - 1; i >= 0; i--){
+            arr[i] = maxheap.extractMax();
+        }
+        console.log(arr);
+    }
+     
+    
+
+</script>
+    
+</body>
+</html>
