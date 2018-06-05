@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+     function Queue () {
+        var items = [];
+        
+        //添加元素到队尾
+        this.enqueue = function (element) {
+            items.push(element);
+        };
+        
+        //出队
+        this.dequeue = function () {
+            return items.shift();
+        };
+        
+        this.size = function () {
+            return items.length;
+        };
+    }
+    
+    //击鼓传花游戏
+    function  hotPotato (nameList, num) {
+        var queue = new Quueue();
+        
+        for (var i = 0; i < nameList.length; i++) {
+            queue.enqueue(nameList[i]);
+        }
+        
+        var eliminated = '';
+        while (queue.size() > 1) {
+            for (var i=0; i < num; i++) {
+                queue.enqueue(queue.dequeue);
+            }
+            eliminated = queue.dequeue();
+            console.log(eliminated + '淘汰');
+        }
+        
+        return queue.dequeue();
+    }
+</script>
+    
+</body>
+</html>
