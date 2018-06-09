@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //这个数列从第3项开始，每一项都等于前两项之和。 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233，377，610，987，1597，2584，4181，6765，10946，17711，28657，46368........
+    
+    //递归方法实现
+     function recurFib(n) {
+        if(n < 2){
+            return n ;
+        }else {
+            return recurFib(n-1)+recurFib(n-2)
+        }
+    }
+    
+    //动态规划
+    function dynFib(n) {
+        let val = [];
+        for(let i = 0; i <= n; ++i){
+            val[i]=0;
+        }
+        if(n ===1 || n  === 2){
+            return 1;
+        }
+        else {
+            val[1] =1;
+            val[2] = 2;
+            for(let i = 3; i <= n; ++i){
+                val[i] = val  [i-1] +val[i-2] ;
+            }
+        }
+        return val[n-1]
+    }
+
+    
+
+</script>
+    
+</body>
+</html>

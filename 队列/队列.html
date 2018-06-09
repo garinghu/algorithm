@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function Queue () {
+        var items = [];
+        
+        //添加元素到队尾
+        this.enqueue = function (element) {
+            items.push(element);
+        }
+        
+        //出队
+        this.dequeue = function () {
+            return items.shift();
+        }
+    }
+</script>
+    
+</body>
+</html>

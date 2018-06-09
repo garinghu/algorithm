@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//后进先出
+    function Stack () {
+        var items = [];
+        
+        //出栈
+        this.pop = function () {
+            return items.pop();
+        }
+        
+        //进栈
+        this.push = function (element) {
+            items.push(element);
+        }
+    }
+</script>
+    
+</body>
+</html>

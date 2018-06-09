@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+   function selectSort (arr, n) {
+       for(var i = 0;i<n;i++){
+           var min = i;
+           for(var j = i + 1;j<n;j++){
+               if(arr[j] < arr[min]){
+                   min = j;
+               }
+           }
+           [arr[i], arr[min]] = [arr[min], arr[i]]
+       }
+   }
+    var arr = [5,4,2,1,3]
+    selectSort(arr, 5);
+    console.log(arr);
+</script>
+    
+</body>
+</html>

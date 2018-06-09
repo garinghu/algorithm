@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function LinkedList () {
+        var Node = function (element) {
+            this.element = element;
+            this.next = null;
+        };
+        
+        var length = 0;
+        var head = null;
+        var tail = head;
+        
+        //向尾部添加元素
+        this.append = function (element) {
+            var node = new Node (element);
+            
+            if(head == null) {
+                head = node;
+                tail = head;
+            } else {
+                tail.next = node;
+                tail = tail.next;
+            }
+            
+            length ++;
+        };
+        
+        //移除元素
+        this.removeAt = function (position) {
+            if(position > -1 && position < length) {
+                var current = head,
+                    previous,
+                    index = 0;
+                
+                //移除第一项
+                if(position === 0) {
+                    head = current.next;
+                } else {
+                    while (index++ < position) {
+                        console.log(index)
+                        previous = current;
+                        current = current.next;
+                        
+                    }
+                    
+                    if(!current.next){
+                        tail = previous;
+                        tail.next = null;
+                    }else{
+                        previous.next = current.next;
+                    }
+                }
+                length --;
+                
+                return current.element;
+            } else {
+                return null;
+            }
+        };
+        
+        //在任意位置插入
+        this.insert = function (position, element) {
+            if(position > -1 && position < length) {
+                 var current = head,
+                    previous,
+                    index = 0;
+                if(position === 0) {
+                    head = current.next;
+                } else {
+                     while (index++ < position) {
+                        previous = current;
+                        current = current.next;
+                    }
+                    node.next = current;
+                    previous.next = node;
+                }
+                length ++;
+                return true;
+            } else {
+                return false;
+            }
+        };
+        //查找单链表中倒数第k个节点
+        this.findLastNode = function(position) {
+            if(position > -1 && position < length) {
+                var current = head,
+                    previous,
+                    index = 0;
+                while(index++ < length - position){
+                    previous = current.next;
+                    current = current.next;
+                }
+                console.log(previous)
+            }else{
+                return null
+            }
+        }
+        
+        //查找链表中间节点
+        this.findMiddleNode = function () {
+            if(head != null){
+                var current = head,
+                    previous,
+                    index = 1;
+                console.log(Math.round(length/2))
+                while(index++ < Math.round(length/2)){
+                    previous = current.next;
+                    current = current.next;
+                }
+                console.log(previous)
+            }else{
+                return null;
+            }
+        }
+        
+        //链表反转
+        this.reverse = function ()  {
+            var current = head,
+                p = current.next,
+                q = p.next,
+                index = 1;
+            while(index++ < length){
+                q = p.next;
+                p.next = current;
+                current = p;
+                p = q;
+            }
+            var x = head;
+            head = tail;
+            tail = x;
+            tail.next = null;
+        }
+        
+        //console链表
+        this.display = function () {
+            var p = head;
+            while(p){
+                console.log(p.element);
+                p = p.next
+            }
+        }
+    }
+    
+    
+    var list = new LinkedList();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    list.append(5);
+    list.append(6);
+    list.append(7);
+    list.append(8);
+    list.append(9);
+    
+
+</script>
+    
+</body>
+</html>

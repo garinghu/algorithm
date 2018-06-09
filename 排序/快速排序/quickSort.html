@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+  function __partition(arr, l, r){
+      var v = arr[l];
+      var j = l;
+      for (var i=l+1; i <= r; i++){
+          if(arr[i] < v){
+              [arr[j+1], arr[i]] = [arr[i], arr[j+1]];
+              j++;
+          }
+      }
+      [arr[l], arr[j]] = [arr[j], arr[l]];
+      
+      return j;
+  }    
+    
+  function __quickSort(arr, l, r){
+      if(l >= r){
+          return;
+      }
+      var p = __partition(arr, l, r);
+      __quickSort(arr, l, p-1);
+      __quickSort(arr, p+1, r);
+  }
+    
+    
+
+  function quickSort(arr, n){
+      __quickSort(arr, 0, n-1)
+  }
+    
+  var arr = [5,3,2,6,1,4]
+  quickSort(arr, 6);
+  console.log(arr);
+    
+//    function* fibonacci() {
+//        y = yield 1;
+//        console.log(y);
+//    }
+//    var it = fibonacci();
+//    console.log(it.next());
+//    it.next(1);
+//    
+//    function timeout(ms) {
+//  return new Promise((resolve) => {
+//    setTimeout(resolve, ms);
+//  });
+//}
+//
+//async function asyncPrint(value, ms) {
+//  await timeout(ms);
+//  console.log(value)
+//}
+//
+//asyncPrint('hello world', 5000);
+</script>   
+</body>
+</html>
